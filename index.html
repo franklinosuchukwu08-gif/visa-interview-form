@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applicant Interview & Details Form</title>
+  <style>
+    :root {
+      --primary-color: #0056b3;
+      --bg-color: #f4f7f6;
+      --card-bg: #ffffff;
+      --border-color: #ccc;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    .form-container {
+      max-width: 650px;
+      margin: 20px auto;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 25px;
+    }
+
+    .section-header {
+      background: #eef4fc;
+      padding: 10px 15px;
+      border-left: 4px solid var(--primary-color);
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.95em;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 0.95em;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    button.submit-btn {
+      width: 100%;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button.submit-btn:hover {
+      background-color: #004085;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h1>Interview & Information Form</h1>
+    <p class="subtitle">Please complete all required fields accurately before submitting.</p>
+
+    <!-- REPLACE "YOUR_FORMSPREE_ID" WITH YOUR ACTUAL FORMSPREE ENDPOINT ID -->
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+
+      <!-- PRELIMINARY INTERVIEW DETAILS -->
+      <div class="section-header">Basic Interview Information</div>
+      
+      <div class="form-group">
+        <label for="country">Country of Application / Origin</label>
+        <input type="text" id="country" name="Interview_Country" placeholder="e.g. Colombia" required>
+      </div>
+
+      <div class="form-group">
+        <label for="language">Preferred Language</label>
+        <input type="text" id="language" name="Interview_Language" placeholder="e.g. Spanish, English" required>
+      </div>
+
+      <!-- APPLICANT QUESTIONNAIRE (SELECTED QUESTIONS) -->
+      <div class="section-header">Applicant Questionnaire</div>
+
+      <div class="form-group">
+        <label for="q1">1. Full Legal Name</label>
+        <input type="text" id="q1" name="Q1_Full_Legal_Name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q2">2. National Identity Card Number (Cédula / Document ID)</label>
+        <input type="text" id="q2" name="Q2_National_ID_Number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q3">3. Date & Place of Birth</label>
+        <input type="text" id="q3" name="Q3_Date_And_Place_Of_Birth" placeholder="DD/MM/YYYY - City, Country" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q4">4. Contact Details (Phone Number & Email Address)</label>
+        <input type="text" id="q4" name="Q4_Contact_Details" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q5">5. Occupation / Student Status</label>
+        <input type="text" id="q5" name="Q5_Occupation_Student_Status" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q6">6. Civil Birth Register Copy / Birth Record Details</label>
+        <input type="text" id="q6" name="Q6_Birth_Register_Details">
+      </div>
+
+      <div class="form-group">
+        <label for="q8">7. Proof of Appointment Confirmation & Fee Payment Details</label>
+        <input type="text" id="q8" name="Q8_Appointment_Payment_Details">
+      </div>
+
+      <div class="form-group">
+        <label for="q9">8. Valid Passport Information (Passport Number, Issue & Expiration Dates)</label>
+        <input type="text" id="q9" name="Q9_Valid_Passport_Info" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q10">9. Previous Passport History (If any)</label>
+        <textarea id="q10" name="Q10_Previous_Passport_History" rows="2"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q11">10. Travel History (International trips over the last 5–10 years)</label>
+        <textarea id="q11" name="Q11_Travel_History" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q13">11. Intended Travel Dates & Trip Duration</label>
+        <input type="text" id="q13" name="Q13_Intended_Travel_Dates" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q14">12. Host or Accommodation Details (Hotel or Host Address in Destination Country)</label>
+        <textarea id="q14" name="Q14_Accommodation_Details" rows="2" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="q15">13. Purpose of Travel (Tourism, Business, Study, etc.)</label>
+        <input type="text" id="q15" name="Q15_Purpose_Of_Travel" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q16">14. Bank Statements / Proof of Financial Solvency</label>
+        <input type="text" id="q16" name="Q16_Financial_Solvency_Details" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q17">15. Proof of Employment or Studies</label>
+        <input type="text" id="q17" name="Q17_Employment_Or_Study_Proof" required>
+      </div>
+
+      <div class="form-group">
+        <label for="q18">16. Sponsorship Proof (If someone else pays for the trip)</label>
+        <input type="text" id="q18" name="Q18_Sponsorship_Details">
+      </div>
+
+      <div class="form-group">
+        <label for="q19">17. Family Background Information (Parents, Spouse, or Immediate Family)</label>
+        <textarea id="q19" name="Q19_Family_Background" rows="3" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Information</button>
+
+    </form>
+  </div>
+
+</body>
+</html>
