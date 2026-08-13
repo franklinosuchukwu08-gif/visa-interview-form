@@ -63,9 +63,6 @@
     }
 
     input[type="text"],
-    input[type="date"],
-    input[type="email"],
-    input[type="tel"],
     select,
     textarea {
       width: 100%;
@@ -102,117 +99,181 @@
 <body>
 
   <div class="form-container">
-    <h1>Interview & Information Form</h1>
-    <p class="subtitle">Please complete all required fields accurately before submitting.</p>
+    <h1 id="title">Interview & Information Form</h1>
+    <p class="subtitle" id="subtitle">Please complete all required fields accurately before submitting.</p>
 
     <!-- REPLACE "YOUR_FORMSPREE_ID" WITH YOUR ACTUAL FORMSPREE ENDPOINT ID -->
     <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
 
       <!-- PRELIMINARY INTERVIEW DETAILS -->
-      <div class="section-header">Basic Interview Information</div>
+      <div class="section-header" id="sec1">Basic Interview Information</div>
       
       <div class="form-group">
-        <label for="country">Country of Application / Origin</label>
+        <label for="country" id="lbl_country">Country of Application / Origin</label>
         <input type="text" id="country" name="Interview_Country" placeholder="e.g. Colombia" required>
       </div>
 
+      <!-- LANGUAGE SELECTOR -->
       <div class="form-group">
-        <label for="language">Preferred Language</label>
-        <input type="text" id="language" name="Interview_Language" placeholder="e.g. Spanish, English" required>
+        <label for="language" id="lbl_language">Preferred Language / Idioma Preferido</label>
+        <select id="language" name="Interview_Language" onchange="changeLanguage()">
+          <option value="English" selected>English</option>
+          <option value="Spanish">Español (Spanish)</option>
+        </select>
       </div>
 
-      <!-- APPLICANT QUESTIONNAIRE (SELECTED QUESTIONS) -->
-      <div class="section-header">Applicant Questionnaire</div>
+      <!-- APPLICANT QUESTIONNAIRE -->
+      <div class="section-header" id="sec2">Applicant Questionnaire</div>
 
       <div class="form-group">
-        <label for="q1">1. Full Legal Name</label>
+        <label for="q1" id="lbl_q1">1. Full Legal Name</label>
         <input type="text" id="q1" name="Q1_Full_Legal_Name" required>
       </div>
 
       <div class="form-group">
-        <label for="q2">2. National Identity Card Number (Cédula / Document ID)</label>
+        <label for="q2" id="lbl_q2">2. National Identity Card Number (Cédula / Document ID)</label>
         <input type="text" id="q2" name="Q2_National_ID_Number" required>
       </div>
 
       <div class="form-group">
-        <label for="q3">3. Date & Place of Birth</label>
+        <label for="q3" id="lbl_q3">3. Date & Place of Birth</label>
         <input type="text" id="q3" name="Q3_Date_And_Place_Of_Birth" placeholder="DD/MM/YYYY - City, Country" required>
       </div>
 
       <div class="form-group">
-        <label for="q4">4. Contact Details (Phone Number & Email Address)</label>
+        <label for="q4" id="lbl_q4">4. Contact Details (Phone Number & Email Address)</label>
         <input type="text" id="q4" name="Q4_Contact_Details" required>
       </div>
 
       <div class="form-group">
-        <label for="q5">5. Occupation / Student Status</label>
+        <label for="q5" id="lbl_q5">5. Occupation / Student Status</label>
         <input type="text" id="q5" name="Q5_Occupation_Student_Status" required>
       </div>
 
       <div class="form-group">
-        <label for="q6">6. Civil Birth Register Copy / Birth Record Details</label>
+        <label for="q6" id="lbl_q6">6. Civil Birth Register Copy / Birth Record Details</label>
         <input type="text" id="q6" name="Q6_Birth_Register_Details">
       </div>
 
       <div class="form-group">
-        <label for="q8">7. Proof of Appointment Confirmation & Fee Payment Details</label>
+        <label for="q8" id="lbl_q8">7. Proof of Appointment Confirmation & Fee Payment Details</label>
         <input type="text" id="q8" name="Q8_Appointment_Payment_Details">
       </div>
 
       <div class="form-group">
-        <label for="q9">8. Valid Passport Information (Passport Number, Issue & Expiration Dates)</label>
+        <label for="q9" id="lbl_q9">8. Valid Passport Information (Passport Number, Issue & Expiration Dates)</label>
         <input type="text" id="q9" name="Q9_Valid_Passport_Info" required>
       </div>
 
       <div class="form-group">
-        <label for="q10">9. Previous Passport History (If any)</label>
+        <label for="q10" id="lbl_q10">9. Previous Passport History (If any)</label>
         <textarea id="q10" name="Q10_Previous_Passport_History" rows="2"></textarea>
       </div>
 
       <div class="form-group">
-        <label for="q11">10. Travel History (International trips over the last 5–10 years)</label>
+        <label for="q11" id="lbl_q11">10. Travel History (International trips over the last 5–10 years)</label>
         <textarea id="q11" name="Q11_Travel_History" rows="3"></textarea>
       </div>
 
       <div class="form-group">
-        <label for="q13">11. Intended Travel Dates & Trip Duration</label>
+        <label for="q13" id="lbl_q13">11. Intended Travel Dates & Trip Duration</label>
         <input type="text" id="q13" name="Q13_Intended_Travel_Dates" required>
       </div>
 
       <div class="form-group">
-        <label for="q14">12. Host or Accommodation Details (Hotel or Host Address in Destination Country)</label>
+        <label for="q14" id="lbl_q14">12. Host or Accommodation Details (Hotel or Host Address in Destination Country)</label>
         <textarea id="q14" name="Q14_Accommodation_Details" rows="2" required></textarea>
       </div>
 
       <div class="form-group">
-        <label for="q15">13. Purpose of Travel (Tourism, Business, Study, etc.)</label>
+        <label for="q15" id="lbl_q15">13. Purpose of Travel (Tourism, Business, Study, etc.)</label>
         <input type="text" id="q15" name="Q15_Purpose_Of_Travel" required>
       </div>
 
       <div class="form-group">
-        <label for="q16">14. Bank Statements / Proof of Financial Solvency</label>
+        <label for="q16" id="lbl_q16">14. Bank Statements / Proof of Financial Solvency</label>
         <input type="text" id="q16" name="Q16_Financial_Solvency_Details" required>
       </div>
 
       <div class="form-group">
-        <label for="q17">15. Proof of Employment or Studies</label>
+        <label for="q17" id="lbl_q17">15. Proof of Employment or Studies</label>
         <input type="text" id="q17" name="Q17_Employment_Or_Study_Proof" required>
       </div>
 
       <div class="form-group">
-        <label for="q18">16. Sponsorship Proof (If someone else pays for the trip)</label>
+        <label for="q18" id="lbl_q18">16. Sponsorship Proof (If someone else pays for the trip)</label>
         <input type="text" id="q18" name="Q18_Sponsorship_Details">
       </div>
 
       <div class="form-group">
-        <label for="q19">17. Family Background Information (Parents, Spouse, or Immediate Family)</label>
+        <label for="q19" id="lbl_q19">17. Family Background Information (Parents, Spouse, or Immediate Family)</label>
         <textarea id="q19" name="Q19_Family_Background" rows="3" required></textarea>
       </div>
 
-      <button type="submit" class="submit-btn">Submit Information</button>
+      <button type="submit" class="submit-btn" id="btn_submit">Submit Information</button>
 
     </form>
   </div>
+
+  <script>
+    function changeLanguage() {
+      const lang = document.getElementById("language").value;
+
+      if (lang === "Spanish") {
+        document.getElementById("title").innerText = "Formulario de Entrevista y Datos";
+        document.getElementById("subtitle").innerText = "Por favor complete todos los campos requeridos antes de enviar.";
+        document.getElementById("sec1").innerText = "Información Básica de la Entrevista";
+        document.getElementById("lbl_country").innerText = "País de Solicitud / Origen";
+        document.getElementById("lbl_language").innerText = "Idioma Preferido";
+        document.getElementById("sec2").innerText = "Cuestionario del Solicitante";
+
+        document.getElementById("lbl_q1").innerText = "1. Nombre Completo Legal";
+        document.getElementById("lbl_q2").innerText = "2. Número de Cédula / Documento de Identidad";
+        document.getElementById("lbl_q3").innerText = "3. Fecha y Lugar de Nacimiento";
+        document.getElementById("lbl_q4").innerText = "4. Datos de Contacto (Teléfono y Correo Electrónico)";
+        document.getElementById("lbl_q5").innerText = "5. Ocupación / Estado Estudiantil";
+        document.getElementById("lbl_q6").innerText = "6. Registro Civil de Nacimiento / Detalle del Registro";
+        document.getElementById("lbl_q8").innerText = "7. Confirmación de Cita y Comprobante de Pago";
+        document.getElementById("lbl_q9").innerText = "8. Datos del Pasaporte Válido (Número, Fecha de Expedición y Expiración)";
+        document.getElementById("lbl_q10").innerText = "9. Historial de Pasaportes Anteriores (Si aplica)";
+        document.getElementById("lbl_q11").innerText = "10. Historial de Viajes (Viajes internacionales en los últimos 5–10 años)";
+        document.getElementById("lbl_q13").innerText = "11. Fechas Previstas de Viaje y Duración";
+        document.getElementById("lbl_q14").innerText = "12. Datos de Alojamiento (Hotel o Dirección del Anfitrión en el País de Destino)";
+        document.getElementById("lbl_q15").innerText = "13. Propósito del Viaje (Turismo, Negocios, Estudio, etc.)";
+        document.getElementById("lbl_q16").innerText = "14. Extractos Bancarios / Solvencia Económica";
+        document.getElementById("lbl_q17").innerText = "15. Comprobante de Empleo o Estudios";
+        document.getElementById("lbl_q18").innerText = "16. Comprobante de Patrocinio (Si alguien más cubre los gastos)";
+        document.getElementById("lbl_q19").innerText = "17. Información Familiar (Padres, Cónyuge o Familia Inmediata)";
+        document.getElementById("btn_submit").innerText = "Enviar Información";
+      } else {
+        document.getElementById("title").innerText = "Interview & Information Form";
+        document.getElementById("subtitle").innerText = "Please complete all required fields accurately before submitting.";
+        document.getElementById("sec1").innerText = "Basic Interview Information";
+        document.getElementById("lbl_country").innerText = "Country of Application / Origin";
+        document.getElementById("lbl_language").innerText = "Preferred Language / Idioma Preferido";
+        document.getElementById("sec2").innerText = "Applicant Questionnaire";
+
+        document.getElementById("lbl_q1").innerText = "1. Full Legal Name";
+        document.getElementById("lbl_q2").innerText = "2. National Identity Card Number (Cédula / Document ID)";
+        document.getElementById("lbl_q3").innerText = "3. Date & Place of Birth";
+        document.getElementById("lbl_q4").innerText = "4. Contact Details (Phone Number & Email Address)";
+        document.getElementById("lbl_q5").innerText = "5. Occupation / Student Status";
+        document.getElementById("lbl_q6").innerText = "6. Civil Birth Register Copy / Birth Record Details";
+        document.getElementById("lbl_q8").innerText = "7. Proof of Appointment Confirmation & Fee Payment Details";
+        document.getElementById("lbl_q9").innerText = "8. Valid Passport Information (Passport Number, Issue & Expiration Dates)";
+        document.getElementById("lbl_q10").innerText = "9. Previous Passport History (If any)";
+        document.getElementById("lbl_q11").innerText = "10. Travel History (International trips over the last 5–10 years)";
+        document.getElementById("lbl_q13").innerText = "11. Intended Travel Dates & Trip Duration";
+        document.getElementById("lbl_q14").innerText = "12. Host or Accommodation Details (Hotel or Host Address in Destination Country)";
+        document.getElementById("lbl_q15").innerText = "13. Purpose of Travel (Tourism, Business, Study, etc.)";
+        document.getElementById("lbl_q16").innerText = "14. Bank Statements / Proof of Financial Solvency";
+        document.getElementById("lbl_q17").innerText = "15. Proof of Employment or Studies";
+        document.getElementById("lbl_q18").innerText = "16. Sponsorship Proof (If someone else pays for the trip)";
+        document.getElementById("lbl_q19").innerText = "17. Family Background Information (Parents, Spouse, or Immediate Family)";
+        document.getElementById("btn_submit").innerText = "Submit Information";
+      }
+    }
+  </script>
 
 </body>
 </html>
